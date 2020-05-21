@@ -1,10 +1,6 @@
 module.exports = {
-  extends: ['react-app'],
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
-  },
+  plugins: ['react', 'react-hooks'],
+  extends: ['plugin:react/recommended'],
   rules: {
     'jsx-quotes': ['error', 'prefer-double'],
     'react/display-name': 'off',

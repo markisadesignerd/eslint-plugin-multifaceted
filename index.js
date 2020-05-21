@@ -1,16 +1,24 @@
-const aliases = require('./config/aliases');
-
 module.exports = {
+  parserOptions: {
+    ecmaVersion: 2019,
+    sourceType: 'module',
+    ecmaFeatures: {
+      globalReturn: false,
+      impliedStrict: true,
+      jsx: true
+    },
+    requireConfigFile: false,
+    allowImportExportEverywhere: false
+  },
   env: {
     browser: true,
-    es6: true,
+    node: true,
+    commonjs: true,
+    es6: true
   },
+  root: true,
   parser: 'babel-eslint',
-  parserOptions: {
-    ecmaVersion: 6,
-    sourceType: 'module',
-  },
-  plugins: ['import', 'sort-keys-fix'],
+  plugins: ['import'],
   extends: ['eslint:recommended'],
   rules: {
     'array-bracket-spacing': 'error',
@@ -74,7 +82,6 @@ module.exports = {
     'rest-spread-spacing': 'error',
     'semi-spacing': 'error',
     'semi': 'error',
-    'sort-keys-fix/sort-keys-fix': 'error',
     'space-before-blocks': 'error',
     'space-before-function-paren': [
       'error',
@@ -85,7 +92,4 @@ module.exports = {
     'space-unary-ops': 'error',
     'strict': ['error', 'global'],
   },
-  settings: {
-    'import/internal-regex': `^(${Object.keys(aliases).join('|')})`,
-  }
 };
