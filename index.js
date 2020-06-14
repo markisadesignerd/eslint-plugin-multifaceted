@@ -1,16 +1,24 @@
-const aliases = require('./config/aliases');
-
 module.exports = {
+  parserOptions: {
+    ecmaVersion: 2019,
+    sourceType: 'module',
+    ecmaFeatures: {
+      globalReturn: false,
+      impliedStrict: true,
+      jsx: true
+    },
+    requireConfigFile: false,
+    allowImportExportEverywhere: false
+  },
   env: {
     browser: true,
-    es6: true,
+    node: true,
+    commonjs: true,
+    es6: true
   },
+  root: true,
   parser: 'babel-eslint',
-  parserOptions: {
-    ecmaVersion: 6,
-    sourceType: 'module',
-  },
-  plugins: ['import', 'sort-keys-fix'],
+  plugins: ['import'],
   extends: ['eslint:recommended'],
   rules: {
     'array-bracket-spacing': 'error',
@@ -38,6 +46,24 @@ module.exports = {
       'alphabetize': { 'order': 'asc' },
     }],
     'indent': ['error', 2],
+    'jsx-quotes': ['error', 'prefer-double'],
+    'react/jsx-closing-bracket-location': 'error',
+    'react/jsx-closing-tag-location': 'error',
+    'react/jsx-curly-spacing': ['error', { when: 'never', children: true }],
+    'react/jsx-equals-spacing': ['error', 'never'],
+    'react/jsx-first-prop-new-line': ['error', 'multiline'],
+    'react/jsx-indent-props': ['error', 2],
+    'react/jsx-indent': ['error', 2],
+    'react/jsx-max-props-per-line': ['error', { maximum: 1 }],
+    'react/jsx-tag-spacing': [
+      'error',
+      {
+        closingSlash: 'never',
+        beforeSelfClosing: 'always',
+        afterOpening: 'never',
+      },
+    ],
+    'react/jsx-wrap-multilines': ['error'],
     'key-spacing': ['error', { beforeColon: false, afterColon: true }],
     'keyword-spacing': 'error',
     'linebreak-style': 'error',
@@ -74,7 +100,6 @@ module.exports = {
     'rest-spread-spacing': 'error',
     'semi-spacing': 'error',
     'semi': 'error',
-    'sort-keys-fix/sort-keys-fix': 'error',
     'space-before-blocks': 'error',
     'space-before-function-paren': [
       'error',
@@ -85,7 +110,4 @@ module.exports = {
     'space-unary-ops': 'error',
     'strict': ['error', 'global'],
   },
-  settings: {
-    'import/internal-regex': `^(${Object.keys(aliases).join('|')})`,
-  }
 };
